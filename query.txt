@@ -1,0 +1,82 @@
+> sudo mysql -u root -p
+
+//INITIAL
+>>SHOW DATABASES;
+>>CREATE DATABASE db1;
+>>USE db1;
+>>SHOW TABLES;
+>>DESCRIBE studunt1;
+>>RENAME TABLE student1 TO stu;
+>>DROP TABLE stu;
+>>DROP DATABASE db1;
+
+
+//--CREATE TABLE
+>>CREATE TABLE stu (id INT PRIMARY KEY, name VARCHAR(20) NOT NULL, dep VARCHAR(10), gpa DOUBLE(4,2), reg FLOAT UNIQUE, time1 TIME, data1 DATE);
+
+
+//--INSERT INTO
+>>INSERT INTO stu VALUE (101, 'A', 'cse', 2.20, 8881.1, CURTIME(), CURDATE());
+>>INSERT INTO stu (id, name, dep) VALUE (101, 'A', 'cse');
+
+
+//--SELECT 
+>>SELECT * FROM stu;
+>>SELECT id, name, dep FROM stu;
+>>SELECT DISTINCT dep FROM stu;
+
+
+//--LIMIT
+>>SELECT * FROM stu LIMIT 3;
+>>SELECT * FROM stu LIMIT 2,5;
+
+
+//--ORDER BY
+>>SELECT * FROM stu ORDER BY ASC;
+>>SELECT * FROM stu ORDER BY DESC;
+
+
+//--WHERE
+>>SELECT * FROM stu WHERE dep!='cse';
+>>SELECT * FROM stu WHERE dep='cse' AND name='A';
+>>SELECT * FROM stu WHERE dep='cse' OR dep='EEE';
+
+
+//--LIKE
+>>SELECT name FROM stu LIKE '_ith__';
+>>SELECT name FROM stu LIKE '%itH%';
+>>SELECT name FROM stu LIKE '_ith%';
+
+
+//--UPDATE
+>>UPDATE stu SET dep='EEE' WHERE id=101;
+
+
+//--FUNCTION
+>>SELECT COUNT(*), SUM(gpa), AVG(gpa), MAX(gpa), MIN(gpa) FROM stu;
+
+
+//--DELETE
+>>DELETE FROM stu WHERE id=101;
+
+
+//--GROUP BY
+>>SELECT SUM(gpa) FROM stu GROUP BY dep;
+
+
+//--ALTER
+>>ALTER TABLE stu ADD COLUMN phone float;
+>>ALTER TABLE stu CHANGE phone phn INT;
+>>ALTER TABLE stu DROP COLUMN phone;
+
+
+//--JOIN
+>>SELECT * FROM stu NATURAL JOIN res;
+>>SELECT * FROM stu CROSS JOIN res WHERE stu.id=res.id;
+>>SELECT * FROM stu LEFT JOIN res ON stu.id=res.id;
+>>SELECT * FROM stu RIGHT JOIN res ON stu.id=res.id;
+
+
+//--UNION
+>>SELECT id FROM stu UNION SELECT id FROM res;
+>>SELECT id FROM stu UNION ALL SELECT id FROM res;
