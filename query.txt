@@ -77,6 +77,20 @@
 >>SELECT * FROM stu RIGHT JOIN res ON stu.id=res.id;
 
 
+//--JOIN (Inner, Left, Right, Full)
+
+#    		        Table1                                          Table2
+#    product		  |	    price                         product      |      quantity
+#    kiwis		    :	      $6                          kiwis		     :      	10
+#    onions		    :	      $3                          onions       :       	 6
+#    tomato		    :	      $7                          broccoli     :	       5
+
+>>SELECT Table1.*, Table2.Quantity FROM Table1 INNER JOIN Table2 ON Table1.Product = Table2.Product
+>>SELECT Table1.*, Table2.Quantity FROM Table1 LEFT OUTER JOIN Table2 ON Table1.Product = Table2.Product
+>>SELECT Table1.*, Table2.Quantity FROM Table1 RIGHT OUTER JOIN Table2 ON Table1.Product = Table2.Product
+>>SELECT Table1.*, Table2.Quantity FROM Table1 FULL OUTER JOIN Table2 ON Table1.Product = Table2.Product
+
+
 //--UNION
 >>SELECT id FROM stu UNION SELECT id FROM res;
 >>SELECT id FROM stu UNION ALL SELECT id FROM res;
